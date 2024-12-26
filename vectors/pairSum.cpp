@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 // This is Brute Force approach
@@ -25,12 +26,14 @@ vector<int> pairSum(vector<int> vec, int target)
 // This is a better approach
 vector<int> pairSumBy2Pointer(vector<int> vec, int target)
 {
+    // sort(vec.begin(),vec.end());
+// cout<<"first ele of vec is"<<vec[2];
     int n = vec.size();
     int st = 0;
     int end = n - 1;
     vector<int> ans;
 
-    while (st < end)
+    while (st <= end)
     {
         int pairSum = vec[st] + vec[end];
         if (pairSum < target)
@@ -52,8 +55,9 @@ vector<int> pairSumBy2Pointer(vector<int> vec, int target)
 }
 int main()
 {
-    vector<int> vec = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 14, 19, 25};
-    int target = 28;
+    // vector<int> vec = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 14, 19, 25};
+    vector<int> vec = {3,2,4};
+    int target =6;
     // vector<int>ans=pairSum(vec,target);
     vector<int> ans = pairSumBy2Pointer(vec, target);
     cout << "The pair for target : " << target << " is " << ans[0] << " & " << ans[1];
