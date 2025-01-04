@@ -4,16 +4,21 @@
 using namespace std;
 
 // Brute-force approach to find majority element
-int bruteForce(vector<int> vec) {
+int bruteForce(vector<int> vec)
+{
     int n = vec.size();
-    for (int val : vec) {
+    for (int val : vec)
+    {
         int freq = 0;
-        for (int el : vec) {
-            if (val == el) {
+        for (int el : vec)
+        {
+            if (val == el)
+            {
                 freq++;
             }
         }
-        if (freq > n / 2) {
+        if (freq > n / 2)
+        {
             return val;
         }
     }
@@ -22,17 +27,23 @@ int bruteForce(vector<int> vec) {
 }
 
 // Optimized approach to find majority element
-int optimizedMajorElement(vector<int> vec) {
+int optimizedMajorElement(vector<int> vec)
+{
     sort(vec.begin(), vec.end());
     int freq = 1;
     int n = vec.size();
-    for (int i = 1; i < n; i++) { // Start from 1 to avoid out-of-bounds
-        if (vec[i] == vec[i - 1]) {
+    for (int i = 1; i < n; i++)
+    { // Start from 1 to avoid out-of-bounds
+        if (vec[i] == vec[i - 1])
+        {
             freq++;
-        } else {
+        }
+        else
+        {
             freq = 1;
         }
-        if (freq > n / 2) {
+        if (freq > n / 2)
+        {
             return vec[i - 1];
         }
     }
@@ -40,10 +51,11 @@ int optimizedMajorElement(vector<int> vec) {
     return -1;
 }
 
-int main() {
+int main()
+{
     vector<int> vec = {1, 2, 1, 3, 1, 2, 2, 2, 2};
     // int ans = bruteForce(vec);
     int ans = optimizedMajorElement(vec);
-    cout<<"The majority element is "<<ans;
+    cout << "The majority element is " << ans;
     return 0;
 }
